@@ -132,8 +132,14 @@
         <img src="logo.png" alt="شعار Y-Store" class="logo-img">
         <span>Y-Store</span>
     </a>
+    <!-- شريط البحث بجانب اللوجو مناسب جداً للجوال -->
+<div class="search-container" style="display: inline-block; vertical-align: middle; position: relative; margin-right: auto; margin-left: 10px; width: 45%; max-width: 180px;">
+    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="ابحث..." style="padding: 5px 25px 5px 8px; width: 100%; font-size: 13px; border: 1px solid #ddd; border-radius: 15px; outline: none; text-align: right; box-sizing: border-box;">
+    <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: #888; font-size: 11px; pointer-events: none;">🔍</span>
+</div>
     <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
 </header>
+ 
 <div class="nav-menu" id="navMenu">
     <span class="close-menu" onclick="toggleMenu()">&times;</span>
     <div class="menu-content">
@@ -144,6 +150,8 @@
 </div>
 
 <div class="main-container">
+    <!-- رسالة المنتجات غير المتوفرة -->
+<div id="noProductsMessage" style="display: none; text-align: center; color: #ff9800; font-size: 18px; font-weight: bold; margin: 30px auto; width: 100%; direction: rtl;">هذا المنتج غير متوفر 🔍</div>
     <aside class="sidebar">
         <ul>
             <li><a class="category-btn active" data-filter="all">الكل</a></li>
@@ -179,12 +187,12 @@
                 <div class="price">5$</div>
                 <button class="order-btn" onclick="openForm('سماعة  لاسلكية', '5$')">اطلب الآن</button>
             </div>
-              <div class="card" data-category="audio">
+         <div class="card" data-category="audio">
                <img src="YOSF6.png" alt="سماعة لاسلكية">
                 <h3> اللاسلكيه M90 سماعات  </h3>
                 <div class="price">7$</div>
                 <button class="order-btn" onclick="openForm('  M90 سماعات ', '7$')">اطلب الآن</button>
-              </div>
+            </div>
             <!-- منتج 4 -->
             <div class="card" data-category="chargers">
                 <img src="yosf4.png" alt="شاحن سريع">
@@ -192,11 +200,15 @@
                 <div class="price">5$</div>
                 <button class="order-btn" onclick="openForm('شاحن سريع ومصرف طاقة 20W', '5$')">اطلب الآن</button>
             </div>
-               <div class="card" data-category="phones">
-                <img src="YOSF5.png" alt="هاتف ذكي برو">
-                <h3>لوحة مذكرة للرسم مع قلم 8.5 بوصة ، ألوان متنوعة</h3>
-                <div class="price">50$</div>
-                <button class="order-btn" onclick="openForm('لوحة مذكرة  ', '10$')">اطلب الآن</button>
+             <div class="card" data-category="chargers">
+                <img src="yosf7.png" alt=" USB ذاكرة فلاش ">
+                <h3> USB ذاكرة فلاش </h3>
+                <div class="price">2$</div>
+                <button class="order-btn" onclick="openForm(' USB ذاكرة فلاش ', '2$')">اطلب الآن</button>
+            </div>
+             
+            
+
 
            
 
@@ -376,11 +388,38 @@ function closeCustomAlert() {
     const alertModal = document.getElementById("customAlert");
     if (alertModal) alertModal.style.display = "none";
 }
+function filterProducts() {
+    // جلب قيمة البحث وتحويلها لنصوص صغيرة
+    var input = document.getElementById('searchInput').value.trim().toLowerCase();
+    // جلب جميع المنتجات
+    var cards = document.querySelectorAll('.card'); 
+    // عداد المنتجات المطابقة
+    var visibleCount = 0; 
 
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var cardText = card.innerText.toLowerCase(); 
+        
+        // التحقق من مطابقة النص
+        if (cardText.indexOf(input) > -1) {
+            card.style.display = ""; // إظهار المنتج بالتنسيق الافتراضي للموقع
+            visibleCount++; 
+        } else {
+            card.style.display = "none"; // إخفاء المنتج
+        }
+    }
+
+    // التحكم في رسالة عدم التوفر
+    var message = document.getElementById('noProductsMessage');
+    if (message) {
+        if (visibleCount === 0) {
+            message.style.display = "block"; // إظهار الرسالة
+        } else {
+            message.style.display = "none";  // إخفاء الرسالة
+        }
+    }
+}
 </script>
 </body>
 </html>
 
-<footer>
-    <p class="copyright"> &copy;  2026 Y-store جميع الحقوق محفوظة.</p>
-</footer>
