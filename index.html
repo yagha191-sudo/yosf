@@ -3,93 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>آفاق الدعم</title>
-</head>
-<>
-
-    <header>
-        <nav class="nav">
-           <ul>
-             <li><a href="#aboutme">من نحن</a></li>
-             <li><a href="#Myworks">أعمالنا</a></li>
-             <li><a href="#contactme">تواصل معنا</a></li>
-             <li><a href="#services">عروضنا الأسبوعية</a></li>
-           </ul>
-        </nav>
-    </header>
+    <title>Y-Store | متجرك الإلكتروني</title>
     
-    <hr />
+    <style>
+        /* 🎨 التنسيقات العامة للموقع والتجاوب مع الجوال */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f5f6fa;
+        }
+        header {
+            background-color: #2c3e50; color: white; padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 500; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-link {
+            color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: bold;
+        }
+        .logo-img { height: 35px; }
 
-    <section class="hero">
-         <img class="arrow" src="assets/svg/arrow.svg" alt="arrow" /> 
-         <div class="hero-content">
-            <h1 class="name">آفاق الدعم</h1>
-            <h1 class="title">كل ما تحتاجه في عالم السوشيال ميديا</h1>
-         </div>
-         <img src="assets/svg/hero.svg" alt="hero image" class="hero-image" />
-    </section>        
-
-    <section class="aboutme" id="aboutme">
-        <img src="assets/svg/AboutMe.svg" class="abotme-imoge" alt="about image"/>
-        <div class="textcontainer">
-            <h1 class="aboutname">من نحن</h1>
-            <p class="aboutme-par">آفاق الدعم هي منصتك المفضلة لخدمات السوشيال ميديا والرشق السريع. نقدم أفضل الحلول لزيادة المتابعين، اللايكات، والمشاهدات عبر كافة المنصات بجودة عالية وسرعة فائقة، لنساعدك على رفع التفاعل في حسابك وبناء الثقة لعلامتك التجارية فوراً.</p>
-        </div> 
-    </section>
-
-    <section class="works" id="Myworks">
-       <div class="workscontainer">
-           <div class="projectTitle">
-              <h1 class="projectname">أعمالنا</h1>
-           </div>
-            <ul>
-                <li>
-                    <a href=""><img src="assets/imgs/ssmm1.png" alt="landing page" /></a>
-                </li>
-                <li>
-                    <a href=""><img src="assets/imgs/ssmm2.png" alt="landing page" /></a>
-                </li>
-              
-            </ul>
-       </div>
-    </section>
-    <section class="works" id="services">
-       <div class="workscontainer">
-           <div class="projectTitle">
-              <h1 class="projectname">عروضنا الأسبوعية</h1>
-           </div>
-            <ul>
-                <li>
-                    <a href=""><img src="assets/imgs/ssmm3.png" alt="landing page" /></a>
-                </li>
-                <li>
-                    <a href=""><img src="assets/imgs/ssmm4.png" alt="landing page" /></a>
-                </li>
-              
-            </ul>
-       </div>
+        /* ☰ زر الثلاث شخوط العلوي الفخم */
+        .menu-toggle-btn {
+            background: none; border: none; color: white; font-size: 26px; cursor: pointer; padding: 5px 10px;
+        }
         
+        /* 📱 القائمة الجانبية اليسرى (تفتح بالضغط على الـ 3 شخوط) */
+        .nav-menu {
+            position: fixed; top: 0; left: 0; width: 260px; height: 100%;
+            background-color: #ffffff; box-shadow: 2px 0 15px rgba(0,0,0,0.15);
+            z-index: 999999; padding: 20px; display: none; box-sizing: border-box; text-align: right;
+        }
+        .close-menu { font-size: 32px; cursor: pointer; color: #333; float: left; }
+        .menu-content h3 { margin-top: 40px; color: #2c3e50; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
+        .menu-content a { display: block; padding: 12px 10px; color: #333; text-decoration: none; font-weight: bold; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+        .menu-content a:hover { background-color: #f1f2f6; color: #e67e22; }
 
-    <section class="contactTitle" id="contactme">
-        <h2 class="contactname">تواصل معنا</h2>
-        <div class="contactcontainer">
-            <div class="emailandphone">
-                <img src="assets/svg/Email.svg" alt="email logo" />
-                <a href="mailto:yagha191@email.com">yagha191@email.com</a> 
+        .main-container { display: flex; flex-direction: column; gap: 15px; padding: 15px; max-width: 1200px; margin: 0 auto; }
+        
+        /* 🔔 شريط الأقسام العلوي التمريري باللمس */
+        .sidebar { width: 100%; background: #ffffff; padding: 10px 0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .sidebar h2 { display: none; }
+        .sidebar ul { display: flex; justify-content: flex-start; gap: 10px; overflow-x: auto; white-space: nowrap; padding: 5px 15px; margin: 0; list-style: none; -webkit-overflow-scrolling: touch; }
+        .sidebar ul::-webkit-scrollbar { display: none; }
+        .category-btn {display: inline-block; padding: 8px 16px; background: #f1f2f6; color: #2c3e50; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+        .category-btn.active, .category-btn:hover { background: #e67e22; color: #ffffff; }
+                /* شبكة عرض المنتجات (عمودين متناسقين للموبايل) */
+        .products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .card { background: white; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { max-width: 100%; height: 130px; object-fit: cover; border-radius: 8px; }
+        .card h3 { font-size: 14px; margin: 10px 0 5px; height: 40px; overflow: hidden; }
+        .order-btn { background-color: #e67e22; color: white; border: none; padding: 8px 10px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 13px; width: 100%; transition: background 0.2s; }
+        .order-btn:hover { background-color: #d35400; }
+
+        
+        /* 📦 الحاوية الضبابية المعتمة خلف النوافذ */
+        .modal { position: fixed !important; top: 0 !important; left: 0 !important;
+            width: 100% !important; height: 100% !important;
+            background-color: rgba(0, 0, 0, 0.6) !important; display: none;
+            justify-content: center !important; align-items: center !important;
+            z-index: 99999 !important; padding: 15px; box-sizing: border-box;
+        }
+        
+        /* 📦 صندوق الاستمارة الأبيض المصغر والمثالي */
+        .modal-content {
+            background: #ffffff !important; padding: 25px 20px !important; border-radius: 16px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; width: 100% !important; max-width: 360px !important;
+            box-sizing: border-box !important; position: relative !important; text-align: right !important;
+        }
+        .close { position: absolute; top: 10px; left: 15px; font-size: 26px; cursor: pointer; color: #aaa; }
+        .location-notice { background-color: #fef9e7 !important; border-right: 4px solid #f1c40f !important; padding: 8px 10px !important; border-radius: 6px !important; font-size: 12px !important; color: #7d6608 !important; margin-bottom: 15px !important; line-height: 1.4 !important; }
+        
+        .modal-content input {
+            width: 100% !important; padding: 12px !important; margin-bottom: 12px !important;
+            border: 1px solid #dcdde1 !important; border-radius: 8px !important;
+            font-size: 14px !important; background-color: #f8f9fa !important; box-sizing: border-box !important;
+        }
+        .modal-content input:focus { border-color: #e67e22 !important; outline: none !important; background-color: #fff !important; }
+        .modal-content .send { background-color: #2ecc71 !important; color: white !important; border: none !important; padding: 12px !important; font-size: 15px !important; font-weight: bold !important; border-radius: 8px !important; cursor: pointer !important; width: 100% !important; }
+        
+        /* الصناديق البيضاء لنوافذ معلومات المتجر */
+        .modal-content-info { background: #ffffff !important; padding: 25px !important; border-radius: 16px !important; width: 100% !important; max-width: 340px !important; text-align: center !important; position: relative !important; box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important; color: #333; }
+        .close-info { position: absolute; top: 10px; left: 15px; font-size: 24px; cursor: pointer; color: #aaa; }
+        .info-btn { background-color: #2c3e50; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer; margin-top: 15px; font-weight: bold; width: 100%; }
+        
+        /* ✅ نافذة النجاح المخصصة والأنيقة ذات الصح الأخضر */
+        .custom-alert-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 999999; padding: 15px; box-sizing: border-box; }
+        .custom-alert-content { background-color: #ffffff; padding: 30px 20px; border-radius: 16px; text-align: center; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); width: 100%; max-width: 340px; position: relative; color: #333; }
+        .close-alert { position: absolute; top: 10px; left: 15px; font-size: 24px; cursor: pointer; color: #bbb; }
+        .success-icon { font-size: 50px; margin-bottom: 10px; }
+        .alert-btn { background-color: #e67e22; color: white; border: none; padding: 10px 40px; border-radius: 20px; cursor: pointer; margin-top: 15px; font-weight: bold; width: 100%; }
+        
+        @media (min-width: 768px) {
+            .products { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+            .card img { height: 180px; }
+            .Card h3 { font-size: 16px; height: 50px; }
+            .order-btn { padding: 10px 20px; font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo-link">
+        <img src="logo.png" alt="شعار Y-Store" class="logo-img">
+        <span>Y-Store</span>
+    </a>
+    <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
+</header>
+<div class="nav-menu" id="navMenu">
+    <span class="close-menu" onclick="toggleMenu()">&times;</span>
+    <div class="menu-content">
+        <h3>قائمة المتجر</h3>
+        <a onclick="openInfoModal('aboutModal')">ℹ️ من نحن</a>
+        <a onclick="openInfoModal('contactModal')">📞 اتصل بنا</a>
+    </div>
+</div>
+
+<div class="main-container">
+    <aside class="sidebar">
+        <ul>
+            <li><a class="category-btn active" data-filter="all">الكل</a></li>
+            <li><a class="category-btn" data-filter="phones">جوالات</a></li>
+            <li><a class="category-btn" data-filter="watches">ساعات ذكية</a></li>
+            <li><a class="category-btn" data-filter="audio">صوتيات</a></li>
+            <li><a class="category-btn" data-filter="chargers">شواحن ومصارف طاقة</a></li>
+        </ul>
+    </aside>
+
+    <main class="content-area">
+        <div class="products">
+            <!-- منتج 1 -->
+            <div class="card" data-category="phones">
+                <img src="yosf1.png" alt="هاتف ذكي برو">
+                <h3>هاتف ايفون  17 Cuban</h3>
+                <div class="price">50$</div>
+                <button class="order-btn" onclick="openForm('هاتف ايفون 17 Cuban', '50$')">اطلب الآن</button>
             </div>
-            <div class="emailandphone">
-                <img src="assets/svg/Phone.svg" alt="phone logo" />
-                <a href="tel:+963984727823">+963 984 727 823</a>
+
+            <!-- منتج 2 -->
+            <div class="card" data-category="watches">
+                <img src="yosf2.png" alt="ساعة ذكية">
+                <h3>ساعة ذكية رياضية</h3>
+                <div class="price">15$</div>
+                <button class="order-btn" onclick="openForm('ساعة ذكية رياضية','15$')">اطلب الآن</button>
+            </div>
+
+            <!-- منتج 3 -->
+            <div class="card" data-category="audio">
+               <img src="yosf.png" alt="سماعة لاسلكية">
+                <h3>سماعة  لاسلكية</h3>
+                <div class="price">5$</div>
+                <button class="order-btn" onclick="openForm('سماعة رأس لاسلكية', '5$')">اطلب الآن</button>
+            </div>
+
+            <!-- منتج 4 -->
+            <div class="card" data-category="chargers">
+                <img src="yosf4.png" alt="شاحن سريع">
+                <h3>شاحن سريع ومصرف طاقة 20W</h3>
+                <div class="price">5$</div>
+                <button class="order-btn" onclick="openForm('شاحن سريع ومصرف طاقة 20W', '5$')">اطلب الآن</button>
             </div>
         </div>
-    </section>
+    </main>
+</div>
+<!-- 📦 نافذة نموذج الطلب المنبثقة بالسنتر -->
+<div class="modal" id="popup">
+    <div class="modal-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h3 id="productName">اسم المنتج</h3>
+        <div class="location-notice">⚠️ تنويه: خدمات الشحن والتوصيل متوفرة فقط داخل مدينة إدلب مؤقتاً.</div>
+        <form id="orderForm" onsubmit="event.preventDefault(); sendOrder();">
+            <input type="text" id="name" placeholder="الاسم الكامل" required>
+            <input type="tel" id="phone" placeholder="رقم الهاتف (واتساب)" required>
+            <input type="text" id="address" placeholder="العنوان بالتفصيل (ضمن إدلب)" required>
+            <button type="submit" class="send">إرسال الطلب</button>
+        </form>
+    </div>
+</div>
 
-    <hr />
-    
-    <footer>
-        <p class="copyright">Copyright &copy; 2026 جميع الحقوق محفوظة.</p>
-    </footer>
+<!-- ✅ نافذة النجاح المخصصة والأنيقة الجديدة -->
+<div id="customAlert" class="custom-alert-modal">
+    <div class="custom-alert-content">
+        <span class="close-alert" onclick="closeCustomAlert()">&times;</span>
+        <div class="success-icon">✅</div>
+        <h2>تم استلام طلبك بنجاح!</h2>
+        <p>شكراً لثقتك بنا، سنتواصل معك قريباً جداً لتأكيد الطلب.</p>
+        <button class="alert-btn" onclick="closeCustomAlert()">موافق</button>
+    </div>
+</div>
 
+<!-- ℹ️ نافذة من نحن المنبثقة -->
+<div id="aboutModal" class="modal">
+    <div class="modal-content-info">
+        <span class="close-info" onclick="closeInfoModal('aboutModal')">&times;</span>
+        <h3>من نحن</h3>
+        <p></p>
+       مرحباً بكم في Y-Store، وجهتكم الأولى للتسوق الإلكتروني في مدينة إدلب. نحن متجر متخصص في توفير أحدث التقنيات الذكية من جوالات، ساعات ذكية، صوتيات، وملحقات الشحن بأعلى جودة وأفضل الأسعار. نلتزم بتقديم تجربة شراء آمنة وسلسة، مع ضمان سرعة التوصيل والدقة في خدمة عملائنا داخل المدينة. شكراً لثقتكم بنا!
+
+        <button class="info-btn" onclick="closeInfoModal('aboutModal')">إغلاق</button>
+    </div>
+</div>
+<!-- ✅ نافذة اتصل بنا المنبثقة الحرة والمحجوبة تلقائياً -->
+<div id="contactModal" class="modal" style="display:none;">
+    <div class="modal-content-info">
+        <span class="close-info" onclick="closeInfoModal('contactModal')">&times;</span>
+        <h3 style="color: #2c3e50; margin-bottom: 15px;">💬 تواصل معنا</h3>
+        
+        <p style="font-size: 14px; line-height: 1.7; text-align: justify; color: #4a5568; margin-bottom: 20px;">
+            يسعدنا في <strong>Y-Store</strong> دائماً التواصل معكم والإجابة على كافة استفساراتكم ومتابعة طلباتكم خطوة بخطوة. إن رضاكم وثقتكم بنا هما المحرك الأساسي لعملنا، وتقديم الدعم السريع لكم هو أولويتنا القصوى داخل مدينة إدلب.<br><br>
+            يمكنكم الآن مراسلتنا فوراً عبر الواتساب لطلب المنتجات، أو للاستفسار عن أسعار خدمات التوصيل والشحن، أو لتقديم أي ملاحظات:
+        </p>
+
+        <!-- 📱 زر المراسلة الفورية المباشر والوحيد للواتساب -->
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+            <a href="https://wa.me" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25D366; color: white; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; transition: background 0.2s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);">
+                💬 مراسلة فورية عبر واتساب
+            </a>
+        </div>
+
+        <p style="font-size: 13px; color: #7f8c8d; line-height: 1.5; border-top: 1px solid #f1f2f6; padding-top: 10px; margin-bottom: 15px;">
+            ⏱️ خدمة العملاء متواجدة لرد على رسائلكم طيلة أيام الأسبوع على مدار الساعة لضمان تجربة تسوق استثنائية وسريعة!
+        </p>
+
+        <button class="info-btn" onclick="closeInfoModal('contactModal')" style="width: 100%; border-radius: 8px; padding: 10px;">إغلاق النافذة</button>
+    </div>
+</div>
+
+
+
+<script>
+let product = "";
+let price = "";
+
+// دالة تصفية وعرض المنتجات حسب الأقسام
+document.querySelectorAll('.category-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.card').forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+function openForm(productName, productPrice) {
+    product = productName; price = productPrice;
+    const titleElement = document.getElementById("productName");
+    if (titleElement) titleElement.innerText = productName;
+    const popup = document.getElementById("popup");
+    if (popup) popup.style.display = "flex";
+}
+
+function closeForm() {
+    const popup = document.getElementById("popup");
+    if (popup) popup.style.display = "none";
+}
+
+function openInfoModal(modalId) {
+    const menu = document.getElementById('navMenu');
+    if (menu) menu.style.display = "none"; // إغلاق القائمة فوراً عند اختيار نافذة
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = "flex";
+}
+
+function closeInfoModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.style.display = "none";
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    if (menu) menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+}
+
+window.onclick = function(event) {
+    const popup = document.getElementById("popup");
+    const about = document.getElementById("aboutModal");
+    const contact = document.getElementById("contactModal");
+    if (event.target == popup) closeForm();
+    if (event.target == about) closeInfoModal('aboutModal');
+    if (event.target == contact) closeInfoModal('contactModal');
+};
+
+function sendOrder() {
+    const nameInput = document.getElementById("name").value.trim();
+    const phoneInput = document.getElementById("phone").value.trim();
+    const addressInput = document.getElementById("address").value.trim();
+    const submitBtn = document.querySelector(".send");
+    if (submitBtn) {
+        submitBtn.innerText = "جاري إرسال الطلب... ⏳"; submitBtn.disabled = true; submitBtn.style.opacity = "0.6";
+    }
+    const data = {
+        name: nameInput, phone: phoneInput, address: addressInput,
+        product: product ? product : "منتج غير محدد", price: price ? price : "0",
+        date: new Date().toLocaleString('ar-EG')
+    };
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxRP2bbVHdK1eVPevMjOeeQNw5rmF5HmVLBqpiEUGTQdUocMImSueC_woUaTVpi-UDa8A/exec";
+
+    fetch(scriptURL, {
+        method: "POST", mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        openCustomAlert(); closeForm();
+        document.getElementById("name").value = ""; document.getElementById("phone").value = ""; document.getElementById("address").value = "";
+    })
+    .catch(error => {
+        alert("حدث خطأ غير متوقع، يرجى المحاولة لاحقاً."); console.error("Error:", error);
+    })
+    .finally(() => {
+        if (submitBtn) {
+            submitBtn.innerText = "إرسال الطلب"; submitBtn.disabled = false; submitBtn.style.opacity = "1";
+        }
+    });
+}
+
+function openCustomAlert() {
+    const alertModal = document.getElementById("customAlert");
+    if (alertModal) alertModal.style.display = "flex";
+}
+function closeCustomAlert() {
+    const alertModal = document.getElementById("customAlert");
+    if (alertModal) alertModal.style.display = "none";
+}
+</script>
 </body>
 </html>
