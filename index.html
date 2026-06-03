@@ -26,6 +26,7 @@
         .menu-toggle-btn {
             background: none; border: none; color: white; font-size: 26px; cursor: pointer; padding: 5px 10px;
         }
+           
         
         /* 📱 القائمة الجانبية اليسرى (تفتح بالضغط على الـ 3 شخوط) */
         .nav-menu {
@@ -98,7 +99,30 @@
             .card img { height: 180px; }
             .Card h3 { font-size: 16px; height: 50px; }
             .order-btn { padding: 10px 20px; font-size: 15px; }
+        }         /* 📌 تنسيق شريط الحقوق السفلي ليكون صغيراً وفي الأسفل تماماً */
+                /* 📌 تنسيق شريط الحقوق السفلي ليكون صغيراً ومثبتاً في قاع الصفحة تماماً */
+        footer {
+            background-color: #2c3e50 !important; /* لون كحلي متناسق مع الهيدر */
+            color: #ffffff !important;
+            text-align: center !important;
+            padding: 8px !important; /* تقليل المساحة ليكون الشريط صغيراً وأنيقاً */
+            font-size: 11px !important; /* تصغير حجم الخط */
+            width: 100% !important;
+            box-sizing: border-box !important;
+            border-top: 2px solid #e67e22 !important; /* خط برتقالي رفيع وفخم فوق الحقوق */
+            
+            /* 🚀 السطور السحرية لجعل الشريط يلتصق في قاع الشاشة بالأسفل تماماً */
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            z-index: 400 !important; /* ليبقى مستقراً بالخلف ولا يغطي على الاستمارة المنبثقة */
         }
+        .Y-store-store{ 
+            margin: 0 !important; 
+            letter-spacing: 0.5px !important; 
+        }
+
+        
     </style>
 </head>
 <body>
@@ -153,9 +177,14 @@
                <img src="yosf.png" alt="سماعة لاسلكية">
                 <h3>سماعة  لاسلكية</h3>
                 <div class="price">5$</div>
-                <button class="order-btn" onclick="openForm('سماعة رأس لاسلكية', '5$')">اطلب الآن</button>
+                <button class="order-btn" onclick="openForm('سماعة  لاسلكية', '5$')">اطلب الآن</button>
             </div>
-
+              <div class="card" data-category="audio">
+               <img src="YOSF6.png" alt="سماعة لاسلكية">
+                <h3> اللاسلكيه M90 سماعات  </h3>
+                <div class="price">7$</div>
+                <button class="order-btn" onclick="openForm('  M90 سماعات ', '7$')">اطلب الآن</button>
+              </div>
             <!-- منتج 4 -->
             <div class="card" data-category="chargers">
                 <img src="yosf4.png" alt="شاحن سريع">
@@ -163,6 +192,20 @@
                 <div class="price">5$</div>
                 <button class="order-btn" onclick="openForm('شاحن سريع ومصرف طاقة 20W', '5$')">اطلب الآن</button>
             </div>
+               <div class="card" data-category="phones">
+                <img src="YOSF5.png" alt="هاتف ذكي برو">
+                <h3>لوحة مذكرة للرسم مع قلم 8.5 بوصة ، ألوان متنوعة</h3>
+                <div class="price">50$</div>
+                <button class="order-btn" onclick="openForm('لوحة مذكرة  ', '10$')">اطلب الآن</button>
+
+           
+
+ 
+
+
+
+
+
         </div>
     </main>
 </div>
@@ -198,8 +241,9 @@
         <span class="close-info" onclick="closeInfoModal('aboutModal')">&times;</span>
         <h3>من نحن</h3>
         <p></p>
-       مرحباً بكم في Y-Store، وجهتكم الأولى للتسوق الإلكتروني في مدينة إدلب. نحن متجر متخصص في توفير أحدث التقنيات الذكية من جوالات، ساعات ذكية، صوتيات، وملحقات الشحن بأعلى جودة وأفضل الأسعار. نلتزم بتقديم تجربة شراء آمنة وسلسة، مع ضمان سرعة التوصيل والدقة في خدمة عملائنا داخل المدينة. شكراً لثقتكم بنا!
-
+            مرحباً بكم في <strong>Y-Store</strong>، وجهتكم الأولى للتسوق الإلكتروني في مدينة إدلب! نحن متجر إلكتروني محلي يهدف إلى توفير تجربة تسوق سهلة ومريحة لجميع سكان إدلب، مع التركيز على تقديم منتجات عالية الجودة بأسعار تنافسية وخدمة عملاء استثنائية.<br><br>
+            تأسس <strong>Y-Store</strong> بهدف تلبية احتياجات المجتمع المحلي في إدلب، حيث نسعى جاهدين لتوفير مجموعة واسعة من المنتجات التي تلبي مختلف الأذواق والاحتياجات، بدءاً من الإلكترونيات والهواتف الذكية، وصولاً إلى الساعات الذكية والصوتيات وشواحن الطاقة.<br><br>
+            نحن نؤمن بأهمية دعم الاقتصاد المحلي وتعزيز الثقة بيننا وبين عملائنا، لذلك نلتزم بتقديم خدمة سريعة وموثوقة داخل مدينة إدلب، مع ضمان جودة المنتجات وتوفير خيارات دفع آمنة وسهلة. شكراً لزيارتكم وثقتكم بنا!
         <button class="info-btn" onclick="closeInfoModal('aboutModal')">إغلاق</button>
     </div>
 </div>
@@ -332,6 +376,11 @@ function closeCustomAlert() {
     const alertModal = document.getElementById("customAlert");
     if (alertModal) alertModal.style.display = "none";
 }
+
 </script>
 </body>
 </html>
+
+<footer>
+    <p class="copyright"> &copy;  2026 Y-store جميع الحقوق محفوظة.</p>
+</footer>

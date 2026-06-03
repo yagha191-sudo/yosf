@@ -329,3 +329,35 @@ header {
     from { transform: scale(0.85); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+          /* 📌 تنسيق شريط الحقوق السفلي ليكون صغيراً وفي الأسفل تماماً */
+        footer {
+            background-color: #2c3e50 !important; /* نفس لون الهيدر الكحلي */
+            color: #ffffff !important;
+            text-align: center !important;
+            padding: 8px !important; /* تقليل المساحة ليكون الشريط صغيراً */
+            font-size: 11px !important; /* تصغير حجم الخط ليكون أنيقاً */
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin-top: 40px !important; /* دفع الشريط للأسفل تماماً تحت المنتجات */
+            border-top: 2px solid #e67e22 !important; /* خط برتقالي رفيع وجميل فوق الحقوق */
+        }
+        .copyright { 
+            margin: 0 !important; 
+            letter-spacing: 0.5px !important; 
+        }
+/* 📌 تنسيق شريط الحقوق السفلي ليكون صغيراً وفي الأسفل تماماً */
+footer {
+    background-color: #2c3e50 !important; /* لون كحلي متناسق */
+    color: #ffffff !important;
+    text-align: center !important;
+    padding: 8px !important; /* تقليل المساحة ليكون الشريط صغيراً */
+    font-size: 11px !important; /* تصغير حجم الخط ليكون أنيقاً */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 40px !important; /* دفعه للأسفل تماماً تحت المنتجات */
+    border-top: 2px solid #e67e22 !important; /* خط برتقالي رفيع فخم فوق الحقوق */
+}
+.copyright { 
+    margin: 0 !important; 
+    letter-spacing: 0.5px !important; 
+}
