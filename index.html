@@ -132,11 +132,7 @@
         <img src="logo.png" alt="شعار Y-Store" class="logo-img">
         <span>Y-Store</span>
     </a>
-    <!-- شريط البحث بجانب اللوجو مناسب جداً للجوال -->
-<div class="search-container" style="display: inline-block; vertical-align: middle; position: relative; margin-right: auto; margin-left: 10px; width: 45%; max-width: 180px;">
-    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="ابحث..." style="padding: 5px 25px 5px 8px; width: 100%; font-size: 13px; border: 1px solid #ddd; border-radius: 15px; outline: none; text-align: right; box-sizing: border-box;">
-    <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: #888; font-size: 11px; pointer-events: none;">🔍</span>
-</div>
+
     <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
 </header>
  
@@ -144,6 +140,13 @@
     <span class="close-menu" onclick="toggleMenu()">&times;</span>
     <div class="menu-content">
         <h3>قائمة المتجر</h3>
+        <!-- شريط البحث الفوري بعد عنوان القائمة وقبل من نحن -->
+<div class="menu-search-container" style="padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 15px; width: 100%;">
+    <div style="position: relative; width: 100%;">
+        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="ابحث عن منتج..." style="padding: 8px 35px 8px 12px; width: 100%; font-size: 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; text-align: right; box-sizing: border-box; background-color: #f9f9f9;">
+        <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #888; font-size: 14px; pointer-events: none;">🔍</span>
+    </div>
+</div>
         <a onclick="openInfoModal('aboutModal')">ℹ️ من نحن</a>
         <a onclick="openInfoModal('contactModal')">📞 اتصل بنا</a>
     </div>
