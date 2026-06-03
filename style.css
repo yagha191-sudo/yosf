@@ -1,391 +1,231 @@
-/* تنسيقات المتجر الأساسية وعناصر التحكم */
+/* إعدادات الألوان والخطوط للهواتف والكمبيوتر */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f5f6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #2c3e50;
+    background-color: #2c5d4f;
     color: white;
-    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 { 
+    margin: 0; 
+    font-size: 1.3rem; 
+    line-height: 1.4;
+}
+
+p.subtitle { 
+    margin: 8px 0 0 0; 
+    font-size: 0.9rem; 
+    opacity: 0.8; 
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+}
+
+.sebha-section {
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 20px;
+}
+
+.sebha-section h3 {
+    margin-top: 0;
+    color: #2c5d4f;
+    font-size: 1.1rem;
+}
+
+.counter {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #2c5d4f;
+    margin: 5px 0 15px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    flex: 2;
+    background-color: #2c5d4f;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn-reset { 
+    flex: 1;
+    background-color: #a94442; 
+}
+
+.btn:active { 
+    transform: scale(0.96);
+}
+
+.duaa-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-duaa {
+    background-color: #cca43b;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 16px;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: right;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    z-index: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.logo-link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 20px;
-    font-weight: bold;
+.btn-duaa::after {
+    content: "←";
+    font-size: 1.1rem;
+    opacity: 0.7;
 }
 
-.logo-img {
-    height: 40px;
-}
+.btn-duaa:active { background-color: #b38f32; transform: scale(0.99); }
 
-.menu-toggle-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* 📱 القائمة الجانبية اليسرى المخفية افتراضياً */
-.nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #ffffff;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 20px;
-    display: none; /* مخفية وتظهر بالـ JS فقط */
-    box-sizing: border-box;
-}
-
-.close-menu {
-    font-size: 28px;
-    cursor: pointer;
-    color: #333;
-    float: left;
-}
-
-.menu-content h3 {
-    margin-top: 40px;
-    color: #2c3e50;
-    border-bottom: 2px solid #f1f2f6;
-    padding-bottom: 10px;
-}
-
-.menu-content a {
-    display: block;
-    padding: 12px 10px;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s;
-}
-
-.menu-content a:hover {
-    background-color: #f1f2f6;
-    color: #e67e22;
-}
-
-/* 🖥️ حاوية الأقسام العلوية والمنتجات أفقياً */
-.main-container {
-    display: flex;
-    flex-direction: column; 
-    gap: 15px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.sidebar {
-    width: 100%;
-    background: #ffffff;
-    padding: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.sidebar h2 {
-    display: none; 
-}
-
-.sidebar ul {
-    display: flex;
-    justify-content: flex-start;
-    gap: 12px;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 5px 15px;
-    margin: 0;
-    list-style: none;
-}
-
-.sidebar ul::-webkit-scrollbar {
-    display: none;
-}
-
-.category-btn {
-    display: inline-block;
-    padding: 8px 18px;
-    background: #f1f2f6;
-    color: #2c3e50;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.category-btn.active, .category-btn:hover {
-    background: #e67e22;
-    color: #ffffff;
-}
-
-/* شبكة كروت عرض المنتجات */
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+.section-title {
+    color: #2c5d4f;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #2c5d4f;
+    padding-bottom: 5px;
+    margin: 25px 0 15px 0;
 }
 
 .card {
-    background: white;
-    padding: 20px;
+    background-color: white;
+    padding: 18px 15px;
     border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.card img {
-    max-width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #e67e22;
-    margin: 10px 0;
-}
-
-.order-btn {
-    background-color: #e67e22;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    border-right: 6px solid #2c5d4f;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.card:active { transform: scale(0.99); }
+
+.card p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    user-select: none;
+}
+
+.count-badge {
+    display: inline-block;
+    background-color: #e2ece9;
+    color: #2c5d4f;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
     font-weight: bold;
-    width: 100%;
-    transition: background 0.2s;
+    margin-top: 10px;
 }
 
-.order-btn:hover {
-    background-color: #d35400;
-}
-
-/* 📦 الخلفية المعتمة الكبرى للنوافذ - معتمة ومحجوبة ومطهرة */
 .modal {
-    position: fixed !important;
-    top: 0 !important; left: 0 !important;
-    width: 100% !important; height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    display: none; /* تفتح بصيغة flex بالـ JS لتتوسط تلقائياً */
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 99999 !important; /* فوق كل أجزاء الصفحة */
-}
-
-/* 📦 الصندوق الأبيض الصغير والمنسق للاستمارة */
-.modal-content {
-    background: #ffffff !important;
-    padding: 30px !important;
-    border-radius: 16px !important; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important; 
-    width: 90% !important;
-    max-width: 420px !important; /* التحكم بالحجم المصغر */
-    box-sizing: border-box !important;
-    position: relative !important;
-    margin: auto !important;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #aaa;
-}
-.close:hover { color: #333; }
-
-/* تنويه الشحن لمدينة إدلب */
-.location-notice {
-    background-color: #fef9e7 !important;
-    border-right: 4px solid #f1c40f !important;
-    padding: 10px 12px !important;
-    border-radius: 6px !important;
-    font-size: 13px !important;
-    color: #7d6608 !important;
-    margin-bottom: 20px !important;
-    line-height: 1.4 !important;
-    text-align: right;
-}
-
-/* تحسين شكل مدخلات الاستمارة */
-#popup input {
-    width: 100% !important;
-    padding: 12px 15px !important;
-    margin-bottom: 15px !important;
-    border: 1px solid #dcdde1 !important;
-    border-radius: 8px !important;
-    font-size: 15px !important;
-    background-color: #f8f9fa !important;
-    box-sizing: border-box !important;
-}
-
-#popup input:focus {
-    border-color: #e67e22 !important;
-    outline: none !important;
-    background-color: #fff !important;
-}
-
-/* زر إرسال الطلب الأخضر الأنيق */
-#popup .send {
-    background-color: #2ecc71 !important;
-    color: white !important;
-    border: none !important;
-    padding: 12px !important;
-    font-size: 16px !important;
-    font-weight: bold !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    width: 100% !important;
-    transition: background 0.2s;
-}
-#popup .send:hover { background-color: #27ae60 !important; }
-
-/* ℹ️ الصناديق البيضاء لنوافذ معلومات المتجر */
-.modal-content-info {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    width: 85%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-
-.close-info {
-    position: absolute;
-    top: 10px; left: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #aaa;
-}
-
-.info-btn {
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 8px 25px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-/* ✅ نافذة النجاح المخصصة والأنيقة الجديدة ذات الصح الأخضر */
-.custom-alert-modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
     display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
     justify-content: center;
     align-items: center;
-    z-index: 999999;
+    z-index: 1000;
+    padding: 20px;
 }
 
-.custom-alert-content {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 380px;
-    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.2s ease-out;
 }
 
-.close-alert {
-    position: absolute;
-    top: 10px; left: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #bbb;
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-.success-icon {
-    font-size: 55px;
-    margin-bottom: 10px;
-}
+.modal h3 { margin-top: 0; font-size: 1.2rem; }
 
-.alert-btn {
-    background-color: #e67e22;
-    color: white;
-    border: none;
-    padding: 10px 40px;
+.modal-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 15px 0 20px 0;
+    color: #222;
+    background: #fcfdfd;
+    padding: 15px;
     border-radius: 8px;
-    cursor: pointer;
-    margin-top: 20px;
+    border: 1px dashed #ddd;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: bold;
-}
-/* إلغاء التحديد والمربع الأزرق نهائياً لجميع عناصر الموقع */
-* {
-    -webkit-tap-highlight-color: transparent !important;
-    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-    outline: none !important;
-    box-shadow: none !important;
+    border: none;
+    cursor: pointer;
 }
 
-/* إلغاء تأثير التركيز الأزرق عند الضغط الفعلي */
-button:focus, a:focus, input:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    background-color: transparent; /* يمنع تغير لون الخلفية الفجائي */
-}
-/* =======================================================
-   تحسينات جمالية واحترافية للمتجر (أُضيفت في النهاية)
-   ======================================================= */
+.copy-btn { background-color: #2c5d4f; color: white; }
+.close-btn { background-color: #777; color: white; }
 
-/* 1. تحسين شكل بطاقات المنتجات */
-.card {
-    border-radius: 15px !important; /* حواف دائرية ناعمة وأنيقة */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important; /* ظل خفيف يعطي بعداً جميلاً */
-    overflow: hidden !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-    border: 1px solid #f0f0f0 !important; /* إطار خفيف جداً يحدد البطاقة */
-}
-
-/* 2. تحسين شكل وسعر المنتج */
-.price {
-    color: #2ecc71 !important; /* لون أخضر جذاب ومريح للعين مخصص للأسعار */
-    font-size: 18px !important;
-    font-weight: bold !important;
-    margin: 8px 0 !important;
-}
-
-/* 3. تأثير تفاعلي ذكي عند الضغط على زر اطلب الآن */
-.order-btn:active {
-    transform: scale(0.96) !important; /* تأثير ارتدادي ممتع يحاكي التطبيقات عند النقر */
-    background-color: #e68a00 !important; /* تغميق لون الزر قليلاً لإشعار المستخدم بالضغط */
-}
-
-/* 4. إبراز زر القسم المختار حالياً */
-.category-btn.active {
-    background-color: #ff9800 !important; 
-    color: white !important;
-    font-weight: bold !important;
-    box-shadow: 0 3px 8px rgba(255, 152, 0, 0.3) !important; /* توهج خفيف تحت القسم النشط */
+footer {
+    margin-top: auto;
+    padding: 20px 15px;
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+    line-height: 1.4;
 }
