@@ -355,3 +355,37 @@ button:focus, a:focus, input:focus {
     box-shadow: none !important;
     background-color: transparent; /* يمنع تغير لون الخلفية الفجائي */
 }
+/* =======================================================
+   تحسينات جمالية واحترافية للمتجر (أُضيفت في النهاية)
+   ======================================================= */
+
+/* 1. تحسين شكل بطاقات المنتجات */
+.card {
+    border-radius: 15px !important; /* حواف دائرية ناعمة وأنيقة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important; /* ظل خفيف يعطي بعداً جميلاً */
+    overflow: hidden !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    border: 1px solid #f0f0f0 !important; /* إطار خفيف جداً يحدد البطاقة */
+}
+
+/* 2. تحسين شكل وسعر المنتج */
+.price {
+    color: #2ecc71 !important; /* لون أخضر جذاب ومريح للعين مخصص للأسعار */
+    font-size: 18px !important;
+    font-weight: bold !important;
+    margin: 8px 0 !important;
+}
+
+/* 3. تأثير تفاعلي ذكي عند الضغط على زر اطلب الآن */
+.order-btn:active {
+    transform: scale(0.96) !important; /* تأثير ارتدادي ممتع يحاكي التطبيقات عند النقر */
+    background-color: #e68a00 !important; /* تغميق لون الزر قليلاً لإشعار المستخدم بالضغط */
+}
+
+/* 4. إبراز زر القسم المختار حالياً */
+.category-btn.active {
+    background-color: #ff9800 !important; 
+    color: white !important;
+    font-weight: bold !important;
+    box-shadow: 0 3px 8px rgba(255, 152, 0, 0.3) !important; /* توهج خفيف تحت القسم النشط */
+}
